@@ -7,30 +7,34 @@
 (jsx_attribute (property_identifier) @tag.attribute)
 
 (jsx_opening_element
-  name: (identifier) @tag)
+  name: (identifier) @tag
+  (#lua-match? @tag "^[A-Z]"))
 
 (jsx_closing_element
-  name: (identifier) @tag)
+  name: (identifier) @tag
+  (#lua-match? @tag "^[A-Z]"))
 
 (jsx_self_closing_element
-  name: (identifier) @tag)
+  name: (identifier) @tag
+  (#lua-match? @tag "^[A-Z]"))
 
-(jsx_opening_element ((identifier) @constructor
- (#lua-match? @constructor "^[A-Z]")))
 
 ; Handle the dot operator effectively - <My.Component>
-(jsx_opening_element ((nested_identifier (identifier) @tag (identifier) @constructor)))
-
-(jsx_closing_element ((identifier) @constructor
- (#lua-match? @constructor "^[A-Z]")))
+(jsx_opening_element 
+  ((nested_identifier 
+     (identifier) @tag 
+  )))
 
 ; Handle the dot operator effectively - </My.Component>
-(jsx_closing_element ((nested_identifier (identifier) @tag (identifier) @constructor)))
-
-(jsx_self_closing_element ((identifier) @constructor
- (#lua-match? @constructor "^[A-Z]")))
+(jsx_closing_element 
+  ((nested_identifier 
+     (identifier) @tag 
+  )))
 
 ; Handle the dot operator effectively - <My.Component />
-(jsx_self_closing_element ((nested_identifier (identifier) @tag (identifier) @constructor)))
+(jsx_self_closing_element 
+  ((nested_identifier 
+     (identifier) @tag 
+  )))
 
 (jsx_text) @none
