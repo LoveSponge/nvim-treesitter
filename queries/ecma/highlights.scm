@@ -103,6 +103,7 @@
 (true) @boolean
 (false) @boolean
 (null) @constant.builtin
+(undefined) @constant.builtin
 [
 (comment)
 (hash_bang_line)
