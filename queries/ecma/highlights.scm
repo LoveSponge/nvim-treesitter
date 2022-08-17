@@ -20,8 +20,11 @@
 ; Special identifiers
 ;--------------------
 
-((identifier) @constructor
- (#lua-match? @constructor "^[A-Z]"))
+(new_expression
+ (identifier) @constructor)
+
+;; ((identifier) @constructor
+;;  (#lua-match? @constructor "^[A-Z]"))
 
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z_][A-Z%d_]+$"))
